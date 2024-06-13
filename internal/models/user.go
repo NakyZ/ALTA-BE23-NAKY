@@ -58,3 +58,11 @@ func (um *UserModel) delKegiatan(delKegiatan User) (bool, error) {
 	}
 	return true, nil
 }
+
+func (um *UserModel) dftKegiatan(dftKegiatan User) (bool, error) {
+	err := um.db.Create(&dftKegiatan).Error
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

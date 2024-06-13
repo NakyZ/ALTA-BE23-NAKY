@@ -48,3 +48,13 @@ func (tm *TodoModel) AddTodo2(delKegiatan Todo) (Todo, error) {
 
 	return delKegiatan, nil
 }
+
+func (tm *TodoModel) AddTodo3(dftKegiatan Todo) (Todo, error) {
+	dftKegiatan.Mark = false
+	err := tm.db.Create(&dftKegiatan).Error
+	if err != nil {
+		return Todo{}, err
+	}
+
+	return dftKegiatan, nil
+}

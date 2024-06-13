@@ -79,3 +79,21 @@ func (uc *UserController) hapusKegiatan() (models.User, error) {
 	}
 	return delKegiatan, nil
 }
+
+func (uc *UserController) daftarKegiatan() (models.User, error) {
+	var dftKegiatan models.User
+	fmt.Print("Masukkan Nama ")
+	fmt.Scanln(&dftKegiatan.Name)
+	fmt.Print("Masukkan Password ") 
+	fmt.Scanln(&dftKegiatan.Password)
+	fmt.Print("Masukkan Email ")
+	fmt.Scanln(&dftKegiatan.Email)
+	fmt.Print("Masukkan HP ")
+	fmt.Scanln(&dftKegiatan.Phone)
+	result, err := uc.model.Register(dftKegiatan)
+	if err != nil && !result {
+		return models.User{}, errors.New("terjadi masalah ketika Delete kegiatan")
+	}
+	return dftKegiatan, nil
+}
+

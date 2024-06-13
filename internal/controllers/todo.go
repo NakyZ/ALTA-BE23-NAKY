@@ -51,3 +51,15 @@ func (tc *TodoController) AddTodo2(id uint) (bool, error) {
 	}
 	return true,nil
 }
+
+func (tc *TodoController) AddTodo3(id uint) (bool, error) {
+	var dftKegiatan models.Todo
+	fmt.Print("daftar Kegiatan")
+	fmt.Scanln(&dftKegiatan.Activity)
+	dftKegiatan.Owner = id
+	_, err := tc.model.AddTodo(dftKegiatan)
+	if err != nil {
+		return false, err
+	}
+	return true,nil
+}
