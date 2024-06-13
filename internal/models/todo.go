@@ -28,3 +28,23 @@ func (tm *TodoModel) AddTodo(newData Todo) (Todo, error) {
 
 	return newData, nil
 }
+
+func (tm *TodoModel) AddTodo1(upKegiatan Todo) (Todo, error) {
+	upKegiatan.Mark = false
+	err := tm.db.Create(&upKegiatan).Error
+	if err != nil {
+		return Todo{}, err
+	}
+
+	return upKegiatan, nil
+}
+
+func (tm *TodoModel) AddTodo2(delKegiatan Todo) (Todo, error) {
+	delKegiatan.Mark = false
+	err := tm.db.Create(&delKegiatan).Error
+	if err != nil {
+		return Todo{}, err
+	}
+
+	return delKegiatan, nil
+}

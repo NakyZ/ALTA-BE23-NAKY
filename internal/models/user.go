@@ -42,3 +42,19 @@ func (um *UserModel) Register(newUser User) (bool, error) {
 	}
 	return true, nil
 }
+
+func (um *UserModel) upKegiatan(upKegiatan User) (bool, error) {
+	err := um.db.Create(&upKegiatan).Error
+	if err != nil {
+		return false, err
+	}
+	return true, nil 
+}
+
+func (um *UserModel) delKegiatan(delKegiatan User) (bool, error) {
+	err := um.db.Create(&delKegiatan).Error
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}

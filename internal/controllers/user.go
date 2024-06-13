@@ -45,3 +45,37 @@ func (uc *UserController) Register() (models.User, error) {
 	}
 	return newData, nil
 }
+
+func (uc *UserController) updatekegiatan() (models.User, error) {
+	var upKegiatan models.User
+	fmt.Print("Masukkan Nama ")
+	fmt.Scanln(&upKegiatan.Name)
+	fmt.Print("Masukkan Password ") 
+	fmt.Scanln(&upKegiatan.Password)
+	fmt.Print("Masukkan Email ")
+	fmt.Scanln(&upKegiatan.Email)
+	fmt.Print("Masukkan HP ")
+	fmt.Scanln(&upKegiatan.Phone)
+	result, err := uc.model.Register(upKegiatan)
+	if err != nil && !result {
+		return models.User{}, errors.New("terjadi masalah ketika Update kegiatan")
+	}
+	return upKegiatan, nil
+}
+
+func (uc *UserController) hapusKegiatan() (models.User, error) {
+	var delKegiatan models.User
+	fmt.Print("Masukkan Nama ")
+	fmt.Scanln(&delKegiatan.Name)
+	fmt.Print("Masukkan Password ") 
+	fmt.Scanln(&delKegiatan.Password)
+	fmt.Print("Masukkan Email ")
+	fmt.Scanln(&delKegiatan.Email)
+	fmt.Print("Masukkan HP ")
+	fmt.Scanln(&delKegiatan.Phone)
+	result, err := uc.model.Register(delKegiatan)
+	if err != nil && !result {
+		return models.User{}, errors.New("terjadi masalah ketika Delete kegiatan")
+	}
+	return delKegiatan, nil
+}

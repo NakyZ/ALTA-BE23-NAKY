@@ -27,3 +27,27 @@ func (tc *TodoController) AddTodo(id uint) (bool, error) {
 
 	return true, nil
 }
+
+func (tc *TodoController) AddTodo1(id uint) (bool, error) {
+	var upKegiatan models.Todo
+	fmt.Print("Update Data")
+	fmt.Scanln(&upKegiatan.Activity)
+	upKegiatan.Owner = id
+	_, err := tc.model.AddTodo(upKegiatan)
+	if err != nil {
+		return false, err
+	}
+	return true,nil
+}
+
+func (tc *TodoController) AddTodo2(id uint) (bool, error) {
+	var delKegiatan models.Todo
+	fmt.Print("Delete Kegiatan")
+	fmt.Scanln(&delKegiatan.Activity)
+	delKegiatan.Owner = id
+	_, err := tc.model.AddTodo(delKegiatan)
+	if err != nil {
+		return false, err
+	}
+	return true,nil
+}
